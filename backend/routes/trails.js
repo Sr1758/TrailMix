@@ -11,6 +11,6 @@ const trails = [
 router.get('/', (req, res) => {
   res.json(trails);
 });
-
+//export
 module.exports = router;
 //Dhiraj Shakespeare
