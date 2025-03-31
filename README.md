@@ -8,4 +8,4 @@ To setup and run the application locally you will need to complete the following
 
   1. Clone the repository from this GitHub page and open it in your IDE.
   2. Run npm install in the main directory to install all dependencies.
-  3. Run npm start in the main directory to run the REACT app.
+  3. Run npm start in the frontend directory to run the REACT app.
