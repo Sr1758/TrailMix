@@ -41,11 +41,11 @@ const Dashboard = ({ trails }) => {
             className="textarea textarea-bordered w-full"
             placeholder="Tell us about your hike..."
           ></textarea>
-          <div className="flex flex-col gap-2">
-            <span className="text-sm font-medium text-gray-700">Difficulty:</span>
-            <div className="flex gap-2">
+          <div className="difficulty-container">
+            <span className="difficulty-label">Difficulty:</span>
+            <div className="difficulty-options">
               {[1, 2, 3, 4, 5].map((level) => (
-                <label key={level} className="flex items-center gap-1">
+                <label key={level} className="difficulty-option">
                   <input type="radio" name="difficulty" value={level} />
                   {level}
                 </label>
