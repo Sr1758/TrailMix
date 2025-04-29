@@ -1,107 +1,113 @@
-/* Background image wrapper */
-.dashboard-background {
+  .dashboard-background {
     background-image: url('/Users/rusheenpatel/Downloads/trailmixer_dashboard_background.jpg');
     background-size: cover;
     background-position: center;
-    background-repeat: no-repeat;
     background-attachment: fixed;
     min-height: 100vh;
     width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-/* Light overlay over background */
-.dashboard-overlay {
-    min-height: 100vh;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  }
+  
+  .dashboard-container {
+    background-color: rgba(255, 255, 255, 0.9);
     padding: 2rem;
-}
-
-/* Container for dashboard content */
-.dashboard-container {
-    width: 100%;
-    max-width: 1000px;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-/* Title */
-.dashboard-title {
+  }
+  
+  .dashboard-title {
     font-size: 2.5rem;
     font-weight: 700;
     color: #05472A;
     text-align: center;
-    margin-bottom: 2rem;
-}
-
-/* Summary Card */
-.summary-card {
-    width: 100%;
-    max-width: 24rem;
+    margin-bottom: 1rem;
+  }
+  
+  .summary-card {
+    width: 24rem;
     background-color: white;
     padding: 1.5rem;
-    margin-bottom: 2rem;
+    margin: 1rem;
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     text-align: center;
-}
-
-/* Trail Log Form */
-.trail-log-form {
+  }
+  
+  .trail-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
     width: 100%;
     max-width: 500px;
-    background-color: white;
-    padding: 2rem;
-    margin-bottom: 2rem;
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .trail-input, .trail-textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+  }
+  
+  .trail-textarea {
+    resize: vertical;
+    min-height: 100px;
+  }
+  
+  .submit-button {
+    background-color: #2e5339;
+    color: white;
+    padding: 0.75rem;
+    border: none;
     border-radius: 8px;
-    text-align: center;
-}
-
-/* Trails Grid */
-.trails-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 2rem;
-    margin-top: 2rem;
-}
-
-/* Misc styles */
-.difficulty-container {
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  .submit-button:hover {
+    background-color: #3f704d;
+  }
+  
+  .difficulty-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 16px;
-}
+  }
   
-.difficulty-label {
+  .difficulty-label {
     font-size: 14px;
     font-weight: 500;
     color: #4a4a4a;
     margin-bottom: 8px;
-}
+  }
   
-.difficulty-options {
+  .difficulty-options {
     display: flex;
     gap: 12px;
     justify-content: center;
-}
+  }
   
-.difficulty-option {
+  .difficulty-option {
     display: flex;
     align-items: center;
     gap: 6px;
     font-size: 14px;
-}
-
-.trail-log-form-fields {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
+  }
+  
+  .trails-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+  
+  .trail-card {
+    background-color: white;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: left;
+  }  

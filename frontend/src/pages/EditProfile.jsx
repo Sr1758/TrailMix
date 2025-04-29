@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { auth, db } from '../firebase';
 import { doc, getDoc, updateDoc } from 'firebase/firestore';
@@ -6,7 +6,6 @@ import '../styles/EditProfile.css';
 
 const EditProfile = () => {
   const [bio, setBio] = useState('');
-  const [trailsCompleted, setTrailsCompleted] = useState(0);
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
@@ -19,7 +18,6 @@ const EditProfile = () => {
         if (userSnap.exists()) {
           const data = userSnap.data();
           setBio(data.bio || '');
-          setTrailsCompleted(data.trailsCompleted || 0);
         } else {
           console.log('No user data found');
         }
@@ -40,8 +38,7 @@ const EditProfile = () => {
     try {
       const userRef = doc(db, 'users', user.uid);
       await updateDoc(userRef, {
-        bio: bio,
-        trailsCompleted: Number(trailsCompleted),
+        bio: bio
       });
 
       navigate('/profile');
@@ -60,14 +57,7 @@ const EditProfile = () => {
           value={bio}
           onChange={(e) => setBio(e.target.value)}
           placeholder="Tell us about yourself..."
-        />
-
-        <label>Trails Completed:</label>
-        <input
-          type="number"
-          value={trailsCompleted}
-          onChange={(e) => setTrailsCompleted(e.target.value)}
-          min="0"
+          required
         />
 
         <button type="submit" className="save-button">

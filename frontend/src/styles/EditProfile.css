@@ -2,7 +2,7 @@
   max-width: 400px;
   margin: 50px auto;
   padding: 20px;
-  background: rgba(255, 255, 255, 0.85); /* light transparent white */
+  background: rgba(255, 255, 255, 0.85);
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
@@ -31,7 +31,7 @@
   padding: 12px;
   font-size: 1rem;
   font-weight: bold;
-  background-color: #2e5339; /* forest green */
+  background-color: #2e5339;
   color: white;
   border: none;
   border-radius: 8px;
@@ -40,7 +40,7 @@
 }
 
 .edit-profile-form button:hover {
-  background-color: #3f704d; /* slightly lighter green on hover */
+  background-color: #3f704d;
 }
 
 .edit-profile-message {

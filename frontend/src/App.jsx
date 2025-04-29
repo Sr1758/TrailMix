@@ -2,18 +2,22 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Navbar from './pages/Navbar';
 import Dashboard from './pages/Dashboard';
+import Profile from './pages/Profile';
 import EditProfile from './pages/EditProfile';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
-import Profile from './pages/Profile';
+import { auth } from './firebase';
+import './styles/Loader.css';
 
 const App = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(null);
 
   useEffect(() => {
     const storedLoggedIn = localStorage.getItem('isLoggedIn');
     if (storedLoggedIn === 'true') {
       setIsLoggedIn(true);
+    } else {
+      setIsLoggedIn(false);
     }
   }, []);
 
@@ -25,15 +29,24 @@ const App = () => {
   const handleLogout = () => {
     setIsLoggedIn(false);
     localStorage.removeItem('isLoggedIn');
+    auth.signOut();
   };
+
+  if (isLoggedIn === null) {
+    return (
+      <div style={{ height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+        <div className="loader"></div>
+      </div>
+    );
+  }
 
   return (
     <Router>
       <Navbar isLoggedIn={isLoggedIn} handleLogout={handleLogout} />
       <Routes>
-        <Route path="/login" element={<Login handleLogin={handleLogin} />} />
-        <Route path="/signup" element={<Signup handleLogin={handleLogin} />} />
-        <Route path="/" element={isLoggedIn ? <Dashboard trails={[]} /> : <Navigate to="/login" />} />
+        <Route path="/login" element={isLoggedIn ? <Navigate to="/" /> : <Login handleLogin={handleLogin} />} />
+        <Route path="/signup" element={isLoggedIn ? <Navigate to="/" /> : <Signup handleLogin={handleLogin} />} />
+        <Route path="/" element={isLoggedIn ? <Dashboard /> : <Navigate to="/login" />} />
         <Route path="/profile" element={isLoggedIn ? <Profile /> : <Navigate to="/login" />} />
         <Route path="/profile/edit" element={isLoggedIn ? <EditProfile /> : <Navigate to="/login" />} />
         <Route path="*" element={<Navigate to="/" />} />
