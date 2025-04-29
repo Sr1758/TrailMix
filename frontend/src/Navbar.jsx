@@ -10,7 +10,7 @@ const Navbar = ({ isLoggedIn, handleLogout }) => {
         {isLoggedIn ? (
           <>
             <li><Link to="/">Dashboard</Link></li>
-            <li><Link to="/editprofile">Edit Profile</Link></li>
+            <li><Link to="/profile">Profile</Link></li>
             <li><button onClick={handleLogout} className="logout-button">Logout</button></li>
           </>
         ) : (

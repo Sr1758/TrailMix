@@ -4,6 +4,7 @@ import Navbar from './Navbar';
 import Dashboard from './Dashboard';
 import EditProfile from './EditProfile';
 import Login from './Login';
+import Profile from './Profile';
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -29,6 +30,9 @@ const App = () => {
     <Router>
       <Navbar isLoggedIn={isLoggedIn} handleLogout={handleLogout} />
       <Routes>
+        <Route path="/" element={isLoggedIn ? <Dashboard trails={[]} /> : <Navigate to="/login" />} />
+        <Route path="/profile" element={isLoggedIn ? <Profile /> : <Navigate to="/login" />} />
+        <Route path="/profile/edit" element={isLoggedIn ? <EditProfile /> : <Navigate to="/login" />} />
         <Route path="/login" element={<Login handleLogin={handleLogin} />} />
         <Route path="/" element={isLoggedIn ? <Dashboard trails={[]} /> : <Navigate to="/login" />} />
         <Route path="/editprofile" element={isLoggedIn ? <EditProfile /> : <Navigate to="/login" />} />
