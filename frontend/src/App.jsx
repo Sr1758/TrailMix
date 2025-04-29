@@ -1,35 +1,41 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Dashboard from "./Dashboard";
-import TrailCard from "./TrailCard";
-import Navbar from "./Navbar";
-import EditProfile from "./EditProfile";
-import TrailLogForm from "./TrailLogForm"; // hypothetical form component
-import NotFound from "./NotFound"; // hypothetical 404 component
-import { getTrails } from "./api";
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import Navbar from './Navbar';
+import Dashboard from './Dashboard';
+import EditProfile from './EditProfile';
+import Login from './Login';
 
-function App() {
-  const [trails, setTrails] = useState([]);
+const App = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
-    async function fetchData() {
-      const data = await getTrails();
-      setTrails(data);
+    const storedLoggedIn = localStorage.getItem('isLoggedIn');
+    if (storedLoggedIn === 'true') {
+      setIsLoggedIn(true);
     }
-    fetchData();
   }, []);
 
+  const handleLogin = () => {
+    setIsLoggedIn(true);
+    localStorage.setItem('isLoggedIn', 'true');
+  };
+
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+    localStorage.removeItem('isLoggedIn');
+  };
+
   return (
-    <BrowserRouter>
-      <Navbar />
+    <Router>
+      <Navbar isLoggedIn={isLoggedIn} handleLogout={handleLogout} />
       <Routes>
-        <Route path="/" element={<Dashboard trails={trails} />} />
-        <Route path="/editprofile" element={<EditProfile />} />
-        <Route path="/log" element={<TrailLogForm />} />
-        <Route path="*" element={<NotFound />} />
+        <Route path="/login" element={<Login handleLogin={handleLogin} />} />
+        <Route path="/" element={isLoggedIn ? <Dashboard trails={[]} /> : <Navigate to="/login" />} />
+        <Route path="/editprofile" element={isLoggedIn ? <EditProfile /> : <Navigate to="/login" />} />
+        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
-    </BrowserRouter>
+    </Router>
   );
-}
+};
 
 export default App;

@@ -1,15 +1,21 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import './styles/Navbar.css';
 
-const Navbar = () => {
+const Navbar = ({ isLoggedIn, handleLogout }) => {
   return (
     <nav className="navbar">
       <div className="navbar-title">TrailMixer</div>
       <ul>
-        <li><Link to="/">Dashboard</Link></li>
-        <li><Link to="/editprofile">Edit Profile</Link></li>
-        {/* Add more links */}
+        {isLoggedIn ? (
+          <>
+            <li><Link to="/">Dashboard</Link></li>
+            <li><Link to="/editprofile">Edit Profile</Link></li>
+            <li><button onClick={handleLogout} className="logout-button">Logout</button></li>
+          </>
+        ) : (
+          <li><Link to="/login">Login</Link></li>
+        )}
       </ul>
     </nav>
   );
