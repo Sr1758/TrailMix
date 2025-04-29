@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Dashboard from "./Dashboard";
 import TrailCard from "./TrailCard";
 import Navbar from "./Navbar";
+import EditProfile from "./EditProfile";
 import TrailLogForm from "./TrailLogForm"; // hypothetical form component
 import NotFound from "./NotFound"; // hypothetical 404 component
 import { getTrails } from "./api";
@@ -23,6 +24,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Dashboard trails={trails} />} />
+        <Route path="/editprofile" element={<EditProfile />} />
         <Route path="/log" element={<TrailLogForm />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
