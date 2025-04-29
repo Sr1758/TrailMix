@@ -53,6 +53,9 @@ const Login = ({ handleLogin }) => {
           Log In
         </button>
       </form>
+      <p style={{ marginTop: '10px' }}>
+        <a href="/reset-password" className="forgot-link">Forgot your password?</a>
+      </p>
       <p className="signup-link">
         Don't have an account? <a href="/signup" className="signup-link-text">Sign Up</a>
       </p>

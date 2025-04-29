@@ -68,3 +68,13 @@
   .signup-link-text:hover {
     text-decoration: underline;
   }  
+
+  .forgot-link {
+    color: #2e5339;
+    font-weight: bold;
+    text-decoration: none;
+  }
+  
+  .forgot-link:hover {
+    text-decoration: underline;
+  }  

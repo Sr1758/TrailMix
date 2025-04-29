@@ -7,6 +7,7 @@ import EditProfile from './pages/EditProfile';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Explore from './pages/Explore';
+import ResetPassword from './pages/ResetPassword';
 import { auth } from './firebase';
 import { LoadScript } from '@react-google-maps/api';
 import './styles/Loader.css';
@@ -47,17 +48,13 @@ const App = () => {
     <Router>
       <Navbar isLoggedIn={isLoggedIn} handleLogout={handleLogout} />
       <Routes>
-        {/* Public Routes */}
         <Route path="/" element={<Explore />} />
+        <Route path="/reset-password" element={<ResetPassword />} />
         <Route path="/login" element={isLoggedIn ? <Navigate to="/" /> : <Login handleLogin={handleLogin} />} />
         <Route path="/signup" element={isLoggedIn ? <Navigate to="/" /> : <Signup handleLogin={handleLogin} />} />
-
-        {/* Private Routes (must be logged in) */}
         <Route path="/dashboard" element={isLoggedIn ? <Dashboard /> : <Navigate to="/login" />} />
         <Route path="/profile" element={isLoggedIn ? <Profile /> : <Navigate to="/login" />} />
         <Route path="/profile/edit" element={isLoggedIn ? <EditProfile /> : <Navigate to="/login" />} />
-
-        {/* Catch-all: redirect to explore */}
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </Router>
