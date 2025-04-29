@@ -53,6 +53,9 @@ const Login = ({ handleLogin }) => {
           Log In
         </button>
       </form>
+      <p className="signup-link">
+        Don't have an account? <a href="/signup" className="signup-link-text">Sign Up</a>
+      </p>
       {error && <p className="login-error">{error}</p>}
     </div>
   );
