@@ -1,6 +1,6 @@
 import React from "react";
-import './styles/Dashboard.css';
-import TrailCard from "./TrailCard";
+import '../styles/Dashboard.css';
+import TrailCard from "../TrailCard";
 
 const Dashboard = ({ trails }) => {
   const completed = trails.filter((trail) => trail.completed);

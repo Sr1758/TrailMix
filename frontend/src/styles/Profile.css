@@ -53,4 +53,17 @@
   
   .edit-profile-button:hover {
     background-color: #3f704d;
+  }
+
+  .profile-bio {
+    font-size: 1rem;
+    color: #555;
+    margin: 1rem 0;
+  }
+  
+  .profile-trails {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #2e5339;
+    margin-bottom: 1rem;
   }  
