@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { auth } from '../firebase';
-import { GoogleMap, LoadScript } from '@react-google-maps/api';
+import { GoogleMap } from '@react-google-maps/api';
 import '../styles/Explore.css';
 
 const Explore = () => {
@@ -44,8 +44,6 @@ const Explore = () => {
           onChange={(e) => setSearch(e.target.value)}
         />
       </div>
-
-      <LoadScript googleMapsApiKey={process.env.REACT_APP_GOOGLE_MAPS_API_KEY}>
         <GoogleMap
           mapContainerStyle={mapContainerStyle}
           center={center}
@@ -53,7 +51,6 @@ const Explore = () => {
         >
           {/* Markers will go here later */}
         </GoogleMap>
-      </LoadScript>
     </div>
   );
 };
