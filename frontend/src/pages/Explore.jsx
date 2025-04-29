@@ -19,7 +19,7 @@ const Explore = () => {
   };
 
   const center = {
-    lat: 40.7128, // Default center: NYC
+    lat: 40.7128, // Default: NYC
     lng: -74.0060
   };
 
@@ -49,7 +49,6 @@ const Explore = () => {
           center={center}
           zoom={10}
         >
-          {/* Markers will go here later */}
         </GoogleMap>
     </div>
   );

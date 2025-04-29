@@ -25,21 +25,24 @@ const Profile = () => {
       if (user) {
         const userRef = doc(db, 'users', user.uid);
         const userSnap = await getDoc(userRef);
+  
+        if (!userSnap.exists()) {
+          alert('User profile not found. Please contact support.');
+          navigate('/');
+          return;
+        }
+  
         const hikesRef = collection(db, 'users', user.uid, 'hikes');
         const hikesSnap = await getDocs(hikesRef);
         const hikesData = hikesSnap.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-
-        if (userSnap.exists()) {
-          setUserData(userSnap.data());
-          setHikes(hikesData);
-        } else {
-          console.log('No user data found');
-        }
+  
+        setUserData(userSnap.data());
+        setHikes(hikesData);
       }
     };
-
+  
     fetchUserData();
-  }, []);
+  }, [navigate]);
 
   const handleEditProfile = () => {
     navigate('/profile/edit');
@@ -50,7 +53,7 @@ const Profile = () => {
     if (!user) return;
 
     try {
-      // Save feedback
+      // Save deletion feedback
       await addDoc(collection(db, 'deletionFeedback'), {
         userId: user.uid,
         email: user.email,
@@ -58,25 +61,24 @@ const Profile = () => {
         timestamp: new Date()
       });
 
-      const userRef = doc(db, 'users', user.uid);
-      await deleteDoc(userRef);
-
+      await deleteDoc(doc(db, 'users', user.uid));
       const hikesRef = collection(db, 'users', user.uid, 'hikes');
       const hikesSnap = await getDocs(hikesRef);
       const deleteHikePromises = hikesSnap.docs.map(doc => deleteDoc(doc.ref));
       await Promise.all(deleteHikePromises);
 
-      // Delete Firebase Auth user
+      // Delete Auth account
       await deleteUser(user);
+      await auth.signOut();
 
       navigate('/');
     } catch (err) {
       console.error('Error deleting account:', err);
       if (err.code === 'auth/requires-recent-login') {
-        alert('⚠️ For your security, please log in again before deleting your account.');
+        alert('⚠️ Please log in again before deleting your account.');
         navigate('/login');
       } else {
-        alert('Error deleting account. Please try again.');
+        alert('Error deleting account.');
       }
     }
   };

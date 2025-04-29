@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { auth, db } from '../firebase';
 import { doc, getDoc, updateDoc } from 'firebase/firestore';
+import { useNavigate } from 'react-router-dom';
 import '../styles/EditProfile.css';
 
 const EditProfile = () => {
   const [bio, setBio] = useState('');
-  const [error, setError] = useState('');
+  const [privateProfile, setPrivateProfile] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -14,12 +14,11 @@ const EditProfile = () => {
       const user = auth.currentUser;
       if (user) {
         const userRef = doc(db, 'users', user.uid);
-        const userSnap = await getDoc(userRef);
-        if (userSnap.exists()) {
-          const data = userSnap.data();
+        const docSnap = await getDoc(userRef);
+        if (docSnap.exists()) {
+          const data = docSnap.data();
           setBio(data.bio || '');
-        } else {
-          console.log('No user data found');
+          setPrivateProfile(data.private || false);
         }
       }
     };
@@ -27,45 +26,46 @@ const EditProfile = () => {
     fetchUserData();
   }, []);
 
-  const handleSave = async (e) => {
-    e.preventDefault();
+  const handleSave = async () => {
     const user = auth.currentUser;
-    if (!user) {
-      setError('User not logged in.');
-      return;
-    }
+    if (!user) return;
 
     try {
-      const userRef = doc(db, 'users', user.uid);
-      await updateDoc(userRef, {
-        bio: bio
+      await updateDoc(doc(db, 'users', user.uid), {
+        bio,
+        private: privateProfile,
       });
 
+      alert('✅ Profile updated!');
       navigate('/profile');
     } catch (err) {
-      console.error('Error updating profile:', err);
-      setError('Error saving profile.');
+      console.error('❌ Error updating profile:', err);
+      alert('Error saving profile.');
     }
   };
 
   return (
     <div className="edit-profile-container">
-      <h2 className="edit-profile-title">Edit Profile</h2>
-      <form className="edit-profile-form" onSubmit={handleSave}>
-        <label>Bio:</label>
+      <div className="edit-profile-card">
+        <h2>Edit Profile</h2>
+  
         <textarea
           value={bio}
           onChange={(e) => setBio(e.target.value)}
-          placeholder="Tell us about yourself..."
-          required
+          placeholder="Enter your bio"
         />
-
-        <button type="submit" className="save-button">
-          Save Changes
-        </button>
-
-        {error && <p className="edit-profile-message">{error}</p>}
-      </form>
+  
+        <div className="private-toggle">
+          <input
+            type="checkbox"
+            checked={privateProfile}
+            onChange={(e) => setPrivateProfile(e.target.checked)}
+          />
+          <label>Make my profile private</label>
+        </div>
+  
+        <button onClick={handleSave}>Save Changes</button>
+      </div>
     </div>
   );
 };

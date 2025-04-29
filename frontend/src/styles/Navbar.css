@@ -1,5 +1,5 @@
 .navbar {
-    background-color: #2e5339; /* deep forest green */
+    background-color: #2e5339;
     padding: 12px 24px;
     display: flex;
     align-items: center;
@@ -20,7 +20,7 @@
   }
   
   .navbar a {
-    color: #f0f7ef; /* soft white-green */
+    color: #f0f7ef;
     text-decoration: none;
     font-weight: 600;
     font-size: 1rem;
@@ -28,7 +28,7 @@
   }
   
   .navbar a:hover {
-    color: #a3e4a7; /* light green hover */
+    color: #a3e4a7;
   }
   
   .navbar-title {

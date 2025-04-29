@@ -1,135 +1,114 @@
 .profile-background {
-    min-height: 100vh;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient(to bottom, #e0f2e9, #ffffff);
-    font-family: 'Poppins', sans-serif;
-    padding: 2rem;
-  }
-  
-  .profile-card {
-    background-color: white;
-    padding: 3rem;
-    border-radius: 12px;
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
-    text-align: center;
-    width: 100%;
-    max-width: 400px;
-  }
-  
-  .profile-picture-placeholder {
-    width: 100px;
-    height: 100px;
-    margin: 0 auto 1rem auto;
-    background-color: #d9d9d9;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 2rem;
-    color: #777;
-  }
-  
-  .profile-username {
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin-bottom: 2rem;
-    color: #05472A;
-  }
-  
-  .edit-profile-button {
-    background-color: #2e5339;
-    color: white;
-    padding: 0.75rem 2rem;
-    border: none;
-    border-radius: 8px;
-    font-size: 1rem;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-  }
-  
-  .edit-profile-button:hover {
-    background-color: #3f704d;
-  }
+  min-height: 100vh;
+  background-color: #f7fff8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
 
-  .profile-bio {
-    font-size: 1rem;
-    color: #555;
-    margin: 1rem 0;
-  }
-  
-  .profile-trails {
-    font-size: 1rem;
-    font-weight: bold;
-    color: #2e5339;
-    margin-bottom: 1rem;
-  }  
+.profile-card {
+  background-color: white;
+  padding: 2rem 3rem;
+  border-radius: 12px;
+  box-shadow: 0 0 12px rgba(0,0,0,0.1);
+  max-width: 500px;
+  width: 100%;
+  text-align: center;
+}
 
-  .delete-account-button {
-    margin-top: 2rem;
-    background-color: #d9534f;
-    color: white;
-    padding: 0.75rem 1.5rem;
-    border: none;
-    border-radius: 8px;
-    font-size: 1rem;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-  }
-  
-  .delete-account-button:hover {
-    background-color: #c9302c;
-  }
-  
-  .delete-confirmation {
-    margin-top: 1rem;
-    padding: 1rem;
-    background-color: #fff3f3;
-    border: 1px solid #d9534f;
-    border-radius: 8px;
-    text-align: center;
-  }
-  
-  .delete-confirmation h3 {
-    color: #d9534f;
-  }
-  
-  .delete-confirmation textarea {
-    width: 100%;
-    min-height: 80px;
-    margin-top: 1rem;
-    padding: 0.5rem;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-  }
-  
-  .delete-buttons {
-    margin-top: 1rem;
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-  }
-  
-  .confirm-delete-button {
-    background-color: #d9534f;
-    color: white;
-    padding: 0.5rem 1rem;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: bold;
-  }
-  
-  .cancel-delete-button {
-    background-color: #ccc;
-    color: black;
-    padding: 0.5rem 1rem;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: bold;
-  }  
+.profile-picture-placeholder {
+  font-size: 64px;
+  margin-bottom: 1rem;
+}
+
+.profile-username {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #2e5339;
+  margin-bottom: 0.5rem;
+}
+
+.profile-bio,
+.profile-trails {
+  font-size: 1rem;
+  color: #444;
+  margin-bottom: 1rem;
+}
+
+.edit-profile-button {
+  background-color: #4caf50;
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-right: 0.75rem;
+}
+
+.edit-profile-button:hover {
+  background-color: #3e8e41;
+}
+
+.delete-account-button {
+  background-color: #d9534f;
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.delete-account-button:hover {
+  background-color: #c9302c;
+}
+
+.delete-confirmation {
+  margin-top: 2rem;
+  padding: 1rem;
+  border: 1px solid #d9534f;
+  background-color: #fff3f3;
+  border-radius: 8px;
+}
+
+.delete-confirmation h3 {
+  color: #d9534f;
+}
+
+.delete-confirmation textarea {
+  width: 100%;
+  padding: 0.5rem;
+  margin-top: 1rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  resize: vertical;
+}
+
+.delete-buttons {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.confirm-delete-button {
+  background-color: #d9534f;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.cancel-delete-button {
+  background-color: #ccc;
+  color: black;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+}
