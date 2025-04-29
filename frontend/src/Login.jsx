@@ -1,54 +1,59 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // 🆕 Add this!
+import { useNavigate } from 'react-router-dom';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from './firebase';
+import './styles/Login.css';
 
 const Login = ({ handleLogin }) => {
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const navigate = useNavigate(); // 🆕
+  const navigate = useNavigate();
 
-  const validUsername = "testuser";
-  const validPassword = "testpass123";
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (username.trim() === '' || password.trim() === '') {
-      setError('Please enter both username and password.');
-    } else if (username === validUsername && password === validPassword) {
+    if (email.trim() === '' || password.trim() === '') {
+      setError('Please enter both email and password.');
+      return;
+    }
+
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
       handleLogin();
-      setUsername('');
+      setEmail('');
       setPassword('');
       setError('');
       navigate('/');
-    } else {
-      setError('Invalid username or password.');
+    } catch (err) {
+      console.error('Login Error:', err);
+      setError('Invalid email or password.');
     }
   };
 
   return (
-    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
-      <h1>Welcome to TrailMixer</h1>
-      <form onSubmit={handleSubmit} style={{ marginTop: '20px', display: 'flex', flexDirection: 'column', gap: '10px', width: '300px' }}>
+    <div className="login-background">
+      <h1 className="login-title">Welcome to TrailMixer</h1>
+      <form className="login-form" onSubmit={handleSubmit}>
         <input
-          type="text"
-          placeholder="Username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          style={{ padding: '10px', borderRadius: '6px', border: '1px solid #ccc' }}
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          className="login-input"
         />
         <input
           type="password"
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          style={{ padding: '10px', borderRadius: '6px', border: '1px solid #ccc' }}
+          className="login-input"
         />
-        <button type="submit" style={{ padding: '10px', fontSize: '1rem', backgroundColor: '#2e5339', color: 'white', border: 'none', borderRadius: '8px', marginTop: '10px' }}>
+        <button type="submit" className="login-button">
           Log In
         </button>
       </form>
-      {error && <p style={{ color: 'red', marginTop: '10px' }}>{error}</p>}
+      {error && <p className="login-error">{error}</p>}
     </div>
   );
 };
