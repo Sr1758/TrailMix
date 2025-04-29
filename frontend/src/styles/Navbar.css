@@ -1,0 +1,39 @@
+.navbar {
+    background-color: #2e5339; /* deep forest green */
+    padding: 12px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  }
+  
+  .navbar ul {
+    list-style: none;
+    display: flex;
+    gap: 24px;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .navbar li {
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  .navbar a {
+    color: #f0f7ef; /* soft white-green */
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: color 0.2s ease;
+  }
+  
+  .navbar a:hover {
+    color: #a3e4a7; /* light green hover */
+  }
+  
+  .navbar-title {
+    color: #d1ffd6;
+    font-weight: bold;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+  }  
