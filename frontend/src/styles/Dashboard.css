@@ -1,30 +1,31 @@
-  .dashboard-background {
-    background-image: url('/Users/rusheenpatel/Downloads/trailmixer_dashboard_background.jpg');
+.dashboard-background {
+    /* background-image: url('/Users/rusheenpatel/Downloads/trailmixer_dashboard_background.jpg'); */
+    background-color: #f0f0f0; /* temporary background color */
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
     min-height: 100vh;
     width: 100%;
-  }
-  
-  .dashboard-container {
+}
+
+.dashboard-container {
     background-color: rgba(255, 255, 255, 0.9);
     padding: 2rem;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-  }
-  
-  .dashboard-title {
+}
+
+.dashboard-title {
     font-size: 2.5rem;
     font-weight: 700;
     color: #05472A;
     text-align: center;
     margin-bottom: 1rem;
-  }
-  
-  .summary-card {
+}
+
+.summary-card {
     width: 24rem;
     background-color: white;
     padding: 1.5rem;
@@ -32,30 +33,30 @@
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     text-align: center;
-  }
-  
-  .trail-form {
+}
+
+.trail-form {
     display: flex;
     flex-direction: column;
     gap: 12px;
     width: 100%;
     max-width: 500px;
-  }
-  
-  .trail-input, .trail-textarea {
+}
+
+.trail-input, .trail-textarea {
     width: 100%;
     padding: 0.75rem;
     border: 1px solid #ccc;
     border-radius: 6px;
     font-size: 1rem;
-  }
-  
-  .trail-textarea {
+}
+
+.trail-textarea {
     resize: vertical;
     min-height: 100px;
-  }
-  
-  .submit-button {
+}
+
+.submit-button {
     background-color: #2e5339;
     color: white;
     padding: 0.75rem;
@@ -65,49 +66,49 @@
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.2s ease;
-  }
-  
-  .submit-button:hover {
+}
+
+.submit-button:hover {
     background-color: #3f704d;
-  }
-  
-  .difficulty-container {
+}
+
+.difficulty-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-  }
-  
-  .difficulty-label {
+}
+
+.difficulty-label {
     font-size: 14px;
     font-weight: 500;
     color: #4a4a4a;
     margin-bottom: 8px;
-  }
-  
-  .difficulty-options {
+}
+
+.difficulty-options {
     display: flex;
     gap: 12px;
     justify-content: center;
-  }
-  
-  .difficulty-option {
+}
+
+.difficulty-option {
     display: flex;
     align-items: center;
     gap: 6px;
     font-size: 14px;
-  }
-  
-  .trails-grid {
+}
+
+.trails-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 2rem;
     margin-top: 2rem;
-  }
-  
-  .trail-card {
+}
+
+.trail-card {
     background-color: white;
     padding: 1rem;
     border-radius: 8px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
     text-align: left;
-  }  
+}  

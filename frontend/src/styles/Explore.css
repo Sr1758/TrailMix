@@ -1,7 +1,11 @@
 .explore-container {
-    padding: 2rem;
     min-height: 100vh;
-    background: #f9f9f9;
+    background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1500&q=80');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    padding: 2rem;
+    position: relative;
   }
   
   .explore-header {
@@ -45,4 +49,84 @@
     color: #666;
     font-style: italic;
     border-radius: 12px;
+  }
+  
+  .trails-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+  }
+  
+  .trail-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
+  }
+  
+  .trail-card:hover {
+    transform: translateY(-4px);
+  }
+  
+  .trail-image {
+    height: 180px;
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .trail-info {
+    padding: 1rem;
+  }
+  
+  .trail-info h3 {
+    margin: 0;
+    color: #2e5339;
+    font-size: 1.25rem;
+  }
+  
+  .trail-location {
+    color: #666;
+    margin: 0.5rem 0;
+  }
+  
+  .trail-details {
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.5rem;
+  }
+  
+  .difficulty {
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-size: 0.875rem;
+  }
+  
+  .difficulty.easy {
+    background: #e6f4ea;
+    color: #137333;
+  }
+  
+  .difficulty.moderate {
+    background: #fef7e0;
+    color: #b06000;
+  }
+  
+  .difficulty.hard {
+    background: #fce8e6;
+    color: #c5221f;
+  }
+  
+  .length {
+    color: #666;
+    font-size: 0.875rem;
   }  
+  
+  .trail-description {
+    background: #f9f9f9;
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }

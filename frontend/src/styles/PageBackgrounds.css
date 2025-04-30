@@ -1,0 +1,40 @@
+/* PageBackgrounds.css */
+.explore-container,
+.dashboard-container,
+.profile-container {
+    min-height: 100vh;
+    background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1500&q=80');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    padding: 2rem;
+    position: relative;
+}
+
+/* Add semi-transparent overlay for better readability */
+.explore-container::before,
+.dashboard-container::before,
+.profile-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255,255,255,0.85); /* adjust opacity as needed */
+    z-index: 1;
+}
+
+/* Make content appear above the overlay */
+.explore-container > *,
+.dashboard-container > *,
+.profile-container > * {
+    position: relative;
+    z-index: 2;
+}
+
+/* Additional styling for content */
+.content-container, .explore-header, .trails-grid {
+    position: relative;
+    z-index: 2;
+}

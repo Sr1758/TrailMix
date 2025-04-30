@@ -9,7 +9,6 @@ import Signup from './pages/Signup';
 import Explore from './pages/Explore';
 import ResetPassword from './pages/ResetPassword';
 import { auth } from './firebase';
-import { LoadScript } from '@react-google-maps/api';
 import './styles/Loader.css';
 
 const App = () => {
@@ -44,7 +43,6 @@ const App = () => {
   }
 
   return (
-    <LoadScript googleMapsApiKey={process.env.REACT_APP_GOOGLE_MAPS_API_KEY}>
     <Router>
       <Navbar isLoggedIn={isLoggedIn} handleLogout={handleLogout} />
       <Routes>
@@ -58,7 +56,6 @@ const App = () => {
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </Router>
-    </LoadScript>
   );
 };
 

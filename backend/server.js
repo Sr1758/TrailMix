@@ -1,22 +1,16 @@
 require('dotenv').config();
 const express = require('express');
-const mongoose = require('mongoose');
 const cors = require('cors');
+const admin = require('./firebase-config');
 const usersRoutes = require('./routes/users');
 const app = express();
 const PORT = process.env.PORT || 5000;
-const MONGO_URI = process.env.MONGO_URI;
 
 // Middleware
 app.use(cors()); // Allows frontend to communicate with backend
 app.use(express.json()); // Parses JSON requests
 app.use('/uploads', express.static('backend/uploads')); // Serve uploads folder
 app.use(usersRoutes); // Attach user routes
-
-// Connect to MongoDB
-mongoose.connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => console.log("✅ MongoDB Connected"))
-  .catch(err => console.error("❌ MongoDB Connection Error:", err));
 
 // Basic Route
 app.get('/', (req, res) => {

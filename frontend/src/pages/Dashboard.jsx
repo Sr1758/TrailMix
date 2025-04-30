@@ -3,6 +3,7 @@ import { auth, db } from '../firebase';
 import { collection, addDoc, getDocs, doc, updateDoc, Timestamp } from 'firebase/firestore';
 import { onAuthStateChanged } from 'firebase/auth';
 import '../styles/Dashboard.css';
+import '../styles/PageBackgrounds.css';
 
 const Dashboard = () => {
   const [hikes, setHikes] = useState([]);
@@ -73,8 +74,8 @@ const Dashboard = () => {
 
   if (loading) {
     return (
-      <div className="dashboard-background">
-        <div className="dashboard-container">
+      <div className="dashboard-container">
+        <div className="content-container">
           <h2>Loading your dashboard...</h2>
         </div>
       </div>
@@ -82,8 +83,8 @@ const Dashboard = () => {
   }
 
   return (
-    <div className="dashboard-background">
-      <div className="dashboard-container">
+    <div className="dashboard-container">
+      <div className="content-container">
         <h1 className="dashboard-title">TrailMixer Dashboard</h1>
 
         {/* Summary Card */}
